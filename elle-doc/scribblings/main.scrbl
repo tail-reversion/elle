@@ -1,12 +1,14 @@
 #lang scribble/manual
 
-@(require (for-label elle))
+@(require "util.rkt")
 
 
 @title[#:style '(toc)]{Elle}
 @author{Kelly Smith}
 
-@nested{
+@defmodule[elle #:lang]
+
+@nested[#:style 'inset]{
  @bold{WARNING:} The Elle language is currently under development. The language itself is @emph{unstable,} and this manual @emph{may not} accurately reflect the current language syntax, features, and libraries.
 
   You have been warned.
@@ -20,3 +22,6 @@ Elle is an intentionally small language which shares much with Racket. Notable f
  @item{Effects, like I/O and mutation, are separated from pure functions.}
  @item{Minimal core and small standard library.}
  ]
+
+
+@include-section["core-forms.scrbl"]

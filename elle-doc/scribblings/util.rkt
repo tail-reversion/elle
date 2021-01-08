@@ -1,11 +1,14 @@
 #lang racket/base
 
-(provide defstxfrag
-         (for-label (all-from-out elle)))
+(provide (for-label (all-from-out elle))
+         ellipsis)
 
 (require (for-syntax racket/base syntax/parse)
          scribble/manual
          (for-label elle))
+
+
+(define ellipsis (racket ...))
 
 
 (define-syntax (reexport-note stx)
