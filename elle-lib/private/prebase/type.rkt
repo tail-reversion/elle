@@ -122,22 +122,32 @@
    #:with (record-names ...) (map record-type-desc-name (attribute tycases.records))
    #:with (pred-names ...) (cons #'enum-pred-name (append (map tuple-type-desc-predicate-name (attribute tycases.tuples))
                                                           (map record-type-desc-predicate-name (attribute tycases.records))))
+   #:with inspector-name (generate-temporary 'inspector)
    #:with (prop-val-name ...) (generate-temporaries (datum (prop ...)))
-   #`(begin (define prop-val-name prop-val) ...
+   #`(begin (define inspector-name inspector)
+            (define prop-val-name prop-val) ...
             (define-enum-type enum-name #,(attribute tycases.enum-cases)
               #:predicate-name enum-pred-name
-              #:inspector inspector)
+              #:inspector inspector-name
+              #:property-maker (λ (desc)
+                                 (list* (cons prop prop-val-name) ...
+                                        (default-enum-properties desc))))
+            (define (tuple-prop-maker desc)
+              (list* (cons prop prop-val-name) ...
+                     (default-tuple-properties desc)))
             #,@(for/list ([tuple-ty (attribute tycases.tuples)])
                  #`(define-tuple-type #,(tuple-type-desc-name tuple-ty) #,(tuple-type-desc-fields tuple-ty)
                      #:predicate-name #,(tuple-type-desc-predicate-name tuple-ty)
-                     #:inspector inspector
-                     #:property-maker (λ (desc)
-                                        (append (list (cons prop prop-val-name) ...)
-                                                (default-tuple-properties desc)))))
+                     #:inspector inspector-name
+                     #:property-maker tuple-prop-maker))
+            (define (record-prop-maker desc)
+              (list* (cons prop prop-val-name) ...
+                     (default-record-properties desc)))
             #,@(for/list ([record-ty (attribute tycases.records)])
                  #`(define-record-type #,(record-type-desc-name record-ty) #,(record-type-desc-fields record-ty)
                      #:predicate-name #,(record-type-desc-predicate-name record-ty)
-                     #:inspector inspector))
+                     #:inspector inspector-name
+                     #:property-maker record-prop-maker))
             (define pred-name (λ (x) (or (pred-names x) ...)))
             (define-syntax name (algebraic-type #:name #'name
                                                 #:predicate #'pred-name
