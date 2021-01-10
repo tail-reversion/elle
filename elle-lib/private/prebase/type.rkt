@@ -124,25 +124,27 @@
                                                           (map record-type-desc-predicate-name (attribute tycases.records))))
    #:with inspector-name (generate-temporary 'inspector)
    #:with (prop-val-name ...) (generate-temporaries (datum (prop ...)))
+   #:with prop-list-name (generate-temporary 'prop-list)
    #`(begin (define inspector-name inspector)
             (define prop-val-name prop-val) ...
+            (define prop-list-name (list (cons prop prop-val-name) ...))
             (define-enum-type enum-name #,(attribute tycases.enum-cases)
               #:predicate-name enum-pred-name
               #:inspector inspector-name
               #:property-maker (λ (desc)
-                                 (list* (cons prop prop-val-name) ...
-                                        (default-enum-properties desc))))
+                                 (append prop-list-name
+                                         (default-enum-properties desc))))
             (define (tuple-prop-maker desc)
-              (list* (cons prop prop-val-name) ...
-                     (default-tuple-properties desc)))
+              (append prop-list-name
+                      (default-tuple-properties desc)))
             #,@(for/list ([tuple-ty (attribute tycases.tuples)])
                  #`(define-tuple-type #,(tuple-type-desc-name tuple-ty) #,(tuple-type-desc-fields tuple-ty)
                      #:predicate-name #,(tuple-type-desc-predicate-name tuple-ty)
                      #:inspector inspector-name
                      #:property-maker tuple-prop-maker))
             (define (record-prop-maker desc)
-              (list* (cons prop prop-val-name) ...
-                     (default-record-properties desc)))
+              (append prop-list-name
+                      (default-record-properties desc)))
             #,@(for/list ([record-ty (attribute tycases.records)])
                  #`(define-record-type #,(record-type-desc-name record-ty) #,(record-type-desc-fields record-ty)
                      #:predicate-name #,(record-type-desc-predicate-name record-ty)
