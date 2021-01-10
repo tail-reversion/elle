@@ -254,3 +254,108 @@
 @defproc[(option-case [o option?] [#:present present-proc (λ/c any/c → any/c)] [#:absent absent-proc (λ/c → any/c)]) any/c]{
 
 }
+
+
+@section{Result Values}
+
+@defproc[(result? [v any/c]) boolean?]{
+
+}
+
+@defproc[(result/c [ctc contract?]) contract?]{
+
+}
+
+@defproc[(success? [v any/c]) boolean?]{
+
+}
+
+@defproc[(success/c [ctc contract?]) boolean?]{
+
+}
+
+@defproc[(success [v any/c]) success?]{
+
+}
+
+@defproc[(success-value [s success?]) any/c]{
+
+}
+
+@defproc[(failure? [v any/c]) boolean?]{
+
+}
+
+@defproc[(failure/c [ctc contract?]) contract?]{
+
+}
+
+@defproc[(failure [v any/c]) failure?]{
+
+}
+
+@defproc[(failure-error [f failure?]) any/c]{
+
+}
+
+
+@section{Symbols}
+
+@defproc[(symbol? [v any/c]) boolean?]{
+
+}
+
+@defproc[(symbol<? [v any/c]) boolean?]{
+
+}
+
+@defproc[(symbol→text [s symbol?]) text?]{
+
+}
+
+@defproc[(text→symbol [txt text?]) symbol?]{
+
+}
+
+
+@section{Text}
+
+@defproc[(text? [v any/c]) boolean?]{
+
+}
+
+@defproc[(text-length [txt text?]) boolean?]{
+
+}
+
+@defproc[(text-ref [txt text?] [n natural?]) char?]{
+
+}
+
+@defproc[(subtext [txt text?] [start natural?] [end natural? (text-length txt)]) text?]{
+
+}
+
+@defproc[(text-append [txt text?] ...) text?]{
+
+}
+
+@defproc[(text=? [txt text?] ...+) boolean?]{
+
+}
+
+@defproc[(text<? [txt text?] ...+) boolean?]{
+
+}
+
+@defproc[(text>? [txt text?] ...+) boolean?]{
+
+}
+
+@defproc[(text≤? [txt text?] ...+) boolean?]{
+
+}
+
+@defproc[(text≥? [txt text?] ...+) boolean?]{
+
+}
