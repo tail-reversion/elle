@@ -1,6 +1,7 @@
 #lang elle/private/prebase
 
-{provide char→unicode-scalar-value
+{provide unicode-scalar-value?
+         char→unicode-scalar-value
          unicode-scalar-value→char}
 
 {reprovide racket/base
