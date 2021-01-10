@@ -19,9 +19,9 @@
 
 {reprovide racket/contract
            #:exposing
-           =/c #:as number=?/c
-           </c #:as number<?/c
-           >/c #:as number>?/c
-           <=/c #:as number≤?/c
-           >=/c #:as number≥?/c
+           =/c #:as number=/c
+           </c #:as number</c
+           >/c #:as number>/c
+           <=/c #:as number≤/c
+           >=/c #:as number≥/c
            real-in integer-in}
