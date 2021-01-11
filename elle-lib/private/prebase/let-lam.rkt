@@ -53,7 +53,7 @@
     [pattern {~seq {~seq kw:keyword pat:match-pattern = default:expr} ...}
              #:attr (patterns 1) (datum (pat ...))
              #:attr (names 1) (generate-temporaries (attribute patterns))
-             #:attr (normalized 1) (datum ({~@ kw [names default]} ...))])
+             #:attr (normalized 1) (syntax->list #'({~@ kw [names default]} ...))])
 
   (define-syntax-class optional-arguments
     #:description "optional arguments"
