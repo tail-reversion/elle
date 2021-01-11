@@ -1,4 +1,4 @@
-#lang elle/private/prebase
+#lang elle/base
 
 {provide @%vector #:as vector
          immutable-vector? #:as vector?
