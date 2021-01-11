@@ -44,7 +44,7 @@
     [pattern {~seq {~seq pat:match-pattern = default:expr} ...}
              #:attr (patterns 1) (datum (pat ...))
              #:attr (names 1) (generate-temporaries (attribute patterns))
-             #:attr (normalized 1) (datum ([names default] ...))])
+             #:attr (normalized 1) (syntax->list #'([names default] ...))])
 
   (define-splicing-syntax-class optional-keyword-arguments
     #:description "optional keyword arguments"
