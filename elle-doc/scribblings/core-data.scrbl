@@ -13,13 +13,13 @@
 }
 
 @defproc[(not [b boolean?]) boolean?]{
-
+Returns the logical complement of @racket[b].
 }
 
 @; TODO: negate
 
 @defproc[(and [b boolean?] ...) boolean?]{
-
+Returns the logical conjunction of the @racket[b]s. In the special case of zero arguments, returns @racket[#true].
 }
 
 @defproc[(nand [b boolean?] ...) boolean?]{
@@ -27,7 +27,7 @@
 }
 
 @defproc[(or [b boolean?] ...) boolean?]{
-
+Returns the logical inclusive disjunction of the @racket[b]s. In the special case of zero arguments, returns @racket[#false].
 }
 
 @defproc[(nor [b boolean?] ...) boolean?]{
@@ -35,7 +35,7 @@
 }
 
 @defproc[(xor [b boolean?] ...) boolean?]{
-
+Returns the logical exclusive disjunction of the @racket[b]s. In the special case of zero arguments, returns @racket[#false].
 }
 
 @defproc[(nxor [b boolean?] ...) boolean?]{
@@ -56,31 +56,31 @@
 }
 
 @defproc[(char→unicode-scalar-value [c char?]) unicode-scalar-value?]{
-
+Returns a Unicode Scalar Value that represents @racket[c].
 }
 
 @defproc[(unicode-scalar-value→char [n unicode-scalar-value?]) char?]{
-
+Returns the character represented by @racket[n].
 }
 
-@defproc[(char<? [c1 char?] [c2 char?]) boolean?]{
-
+@defproc[(char<? [c char?] ...+) boolean?]{
+Returns @racket[#true], if the @racket[c]s are ordered by increasing Scalar Values; @racket[#false], otherwise.
 }
 
-@defproc[(char>? [c1 char?] [c2 char?]) boolean?]{
-
+@defproc[(char>? [c char?] ...+) boolean?]{
+Returns @racket[#true], if the @racket[c]s are ordered by decreasing Scalar Values; @racket[#false], otherwise.
 }
 
-@defproc[(char≤? [c1 char?] [c2 char?]) boolean?]{
-
+@defproc[(char≤? [c char?] ...+) boolean?]{
+Returns @racket[#true], if the @racket[c]s are ordered by nondecreasing Scalar Values; @racket[#false], otherwise.
 }
 
-@defproc[(char≥? [c1 char?] [c2 char?]) boolean?]{
-
+@defproc[(char≥? [c char?] ...+) boolean?]{
+Returns @racket[#true], if the @racket[c]s are ordered by nonincreasing Scalar Values; @racket[#false], otherwise.
 }
 
 @defproc[(char-in [c1 char?] [c2 char?]) flat-contract?]{
-
+Returns a flat contract that recognizes a character with a code point between that of @racket[c1] and @racket[c2], inclusive.
 }
 
 
