@@ -104,6 +104,7 @@
 
 
 @section{Numerical Types and Operations}
+Elle inherits the Scheme Numerical Tower. More precisely, Elle inherits Racket’s implementation of the Numerical Tower.
 
 @subsection{Types}
 
@@ -143,31 +144,31 @@
 @subsection{Generic Arithmethic}
 
 @defproc[(+ [z number?] ...) number?]{
-
+Returns the sum of the @racket[z]s. In the special case of one @racket[z], this procedure is the identity. In the special case of zero @racket[z]s, returns an exact zero.
 }
 
 @defproc[(- [z number?] ...+) number?]{
-
+Returns the differents of the @racket[z]s. In the special case of one @racket[z], returns the additive inverse of the @racket[z].
 }
 
 @defproc[(* [z number?] ...) number?]{
-
+Returns the product of the @racket[z]s. In the special case of one @racket[z], this procedure is the identity. In the special case of zero @racket[z]s, returns an exact one.
 }
 
 @defproc[(/ [z number?] ...+) number?]{
-
+Returns the quotient of the @racket[z]s. In the special case of one @racket[z], returns the multiplicative inverse (reciprocal) of @racket[z].
 }
 
 @defproc[(add1 [z number?]) number?]{
-
+Equivalent to @racket[(+ z 1)].
 }
 
 @defproc[(sub1 [z number?]) number?]{
-
+Equivalent to @racket[(- z 1)].
 }
 
 @defproc[(zero? [z number?]) boolean?]{
-
+Returns @racket[#true], if @racket[z] is exact or inexact zero; @racket[#false], otherwise.
 }
 
 
