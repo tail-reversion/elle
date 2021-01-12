@@ -144,31 +144,31 @@ Elle inherits the Scheme Numerical Tower. More precisely, Elle inherits Racket�
 @subsection{Generic Arithmethic}
 
 @defproc[(+ [z number?] ...) number?]{
-Returns the sum of the @racket[z]s. In the special case of one @racket[z], this procedure is the identity. In the special case of zero @racket[z]s, returns an exact zero.
+ Returns the sum of the @racket[z]s. In the special case of one @racket[z], this procedure is the identity. In the special case of zero @racket[z]s, returns an exact zero.
 }
 
 @defproc[(- [z number?] ...+) number?]{
-Returns the differents of the @racket[z]s. In the special case of one @racket[z], returns the additive inverse of the @racket[z].
+ Returns the differents of the @racket[z]s. In the special case of one @racket[z], returns the additive inverse of the @racket[z].
 }
 
 @defproc[(* [z number?] ...) number?]{
-Returns the product of the @racket[z]s. In the special case of one @racket[z], this procedure is the identity. In the special case of zero @racket[z]s, returns an exact one.
+ Returns the product of the @racket[z]s. In the special case of one @racket[z], this procedure is the identity. In the special case of zero @racket[z]s, returns an exact one.
 }
 
 @defproc[(/ [z number?] ...+) number?]{
-Returns the quotient of the @racket[z]s. In the special case of one @racket[z], returns the multiplicative inverse (reciprocal) of @racket[z].
+ Returns the quotient of the @racket[z]s. In the special case of one @racket[z], returns the multiplicative inverse (reciprocal) of @racket[z].
 }
 
 @defproc[(add1 [z number?]) number?]{
-Equivalent to @racket[(+ z 1)].
+ Equivalent to @racket[(+ z 1)].
 }
 
 @defproc[(sub1 [z number?]) number?]{
-Equivalent to @racket[(- z 1)].
+ Equivalent to @racket[(- z 1)].
 }
 
 @defproc[(zero? [z number?]) boolean?]{
-Returns @racket[#true], if @racket[z] is exact or inexact zero; @racket[#false], otherwise.
+ Returns @racket[#true], if @racket[z] is exact or inexact zero; @racket[#false], otherwise.
 }
 
 
@@ -228,75 +228,33 @@ Returns @racket[#true], if @racket[z] is exact or inexact zero; @racket[#false],
 
 @section{Optional Values}
 
-@defproc[(optional? [v any/c]) boolean?]{
+@defidform[#:kind "type" optional]{
+ An optional value encapsulates a result that either is present or absent. This data type is particularly useful for the return value of element lookups in collections, or for procedures that have a trivial notion of failure.
 
+ @defsubform[#:kind "constructor" #:id present (present value)]{
+  Container for a value.
+ }
+
+ @defsubform[#:kind "constructor" #:id absent absent]{
+  Represents a lack of a value.
+ }
 }
 
-@defproc[(absent? [v any/c]) boolean?]{
-
-}
-
-@defthing[absent absent?]{
-
-}
-
-@defproc[(present? [v any/c]) boolean?]{
-
-}
-
-@defproc[(present [v any/c]) present?]{
-
-}
-
-@defproc[(present-value [p present?]) any/c]{
-
-}
-
-@defproc[(option-case [o option?] [#:present present-proc (λ/c any/c → any/c)] [#:absent absent-proc (λ/c → any/c)]) any/c]{
+@defproc[(option-case [opt option?] [#:present present-proc (λ/c any/c → any/c)] [#:absent absent-proc (λ/c → any/c)]) any/c]{
 
 }
 
 
 @section{Result Values}
 
-@defproc[(result? [v any/c]) boolean?]{
+@defidform[#:kind "type" result]{
+ @defsubform[#:kind "constructor" #:id success (success value)]{
 
-}
+ }
 
-@defproc[(result/c [ctc contract?]) contract?]{
+ @defsubform[#:kind "constructor" #:id failure (failure error)]{
 
-}
-
-@defproc[(success? [v any/c]) boolean?]{
-
-}
-
-@defproc[(success/c [ctc contract?]) boolean?]{
-
-}
-
-@defproc[(success [v any/c]) success?]{
-
-}
-
-@defproc[(success-value [s success?]) any/c]{
-
-}
-
-@defproc[(failure? [v any/c]) boolean?]{
-
-}
-
-@defproc[(failure/c [ctc contract?]) contract?]{
-
-}
-
-@defproc[(failure [v any/c]) failure?]{
-
-}
-
-@defproc[(failure-error [f failure?]) any/c]{
-
+ }
 }
 
 
