@@ -1,23 +1,28 @@
-#lang racket/base
+#lang scribble/manual
 
-(provide (for-label (all-from-out elle))
-         ellipsis)
+@(provide (for-label (all-from-out elle))
+          ellipsis
+          deftype
+          defcon)
 
-(require (for-syntax racket/base syntax/parse)
-         scribble/manual
-         (for-label elle))
+@(require (for-syntax racket/base
+                      rebellion/type/tuple/binding
+                      rebellion/type/record/binding
+                      rebellion/type/enum/binding)
+          syntax/parse/define
+          scribble/manual
+          (for-label elle))
 
 
-(define ellipsis (racket ...))
+@(define ellipsis (racket ...))
 
 
-(define-syntax (reexport-note stx)
-  (syntax-parse stx
-    [(_ name:id lib:id) #'()]))
+@(define-syntax-parser deftype
+   #:track-literals
+   [(_ name:id preflow ...) #'(defform #:kind "type" #:id name name preflow ...)])
 
-(define-syntax (defstxfrag stx)
-  (syntax-parse stx
-    [(_ name:id ([nonterm:id gramm] ...+) preflow ...)
-     #'(defform #:kind "syntax fragment" #:id name #:literals (name)
-         ([nonterm gramm] ...)
-         preflow ...)]))
+@(define-syntax-parser defcon
+   #:track-literals
+   [(_ tuple:tuple-id preflow ...) #'(defsubform #:kind "constructor" #:id tuple.name (tuple.name tuple.field-name ...) preflow ...)]
+   [(_ record:record-id preflow ...) #'(defsubform #:kind "constructor" #:id record.name (record.name record.field-keyword ...))]
+   [(_ enum:id preflow ...) #'(defsubform #:kind "constructor" #:id enum enum preflow ...)])
