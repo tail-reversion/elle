@@ -174,24 +174,24 @@ Elle inherits the Scheme Numerical Tower. More precisely, Elle inherits Racket�
 
 @subsection{Comparison}
 
-@defproc[(number=? [z1 number?] [z number?] ...) boolean?]{
-
+@defproc[(number=? [z number?] ...+) boolean?]{
+Returns @racket[#true], if all @racket[z]s are numerically equivalent; @racket[#false], otherwise. Inexact numbers are coerced to exactness before comparison.
 }
 
-@defproc[(number<? [x1 real?] [x real?] ...) boolean?]{
-
+@defproc[(number<? [x real?] ...+) boolean?]{
+Returns @racket[#true], if all @racket[x]s are ordered by numerically increasing value; @racket[#false], otherwise.
 }
 
-@defproc[(number>? [x1 real?] [x real?] ...) boolean?]{
-
+@defproc[(number>? [x real?] ...+) boolean?]{
+Returns @racket[#true], if all @racket[x]s are ordered by numerically decreasing value; @racket[#false], otherwise.
 }
 
-@defproc[(number≤? [x1 real?] [x real?] ...) boolean?]{
-
+@defproc[(number≤? [x real?] ...+) boolean?]{
+Returns @racket[#true], if all @racket[x]s are ordered by numerically nondecreasing value; @racket[#false], otherwise.
 }
 
-@defproc[(number≥? [x1 real?] [x real?] ...) boolean?]{
-
+@defproc[(number≥? [x real?] ...+) boolean?]{
+Returns @racket[#true], if all @racket[x]s are ordered by numerically nonincreasing value; @racket[#false], otherwise.
 }
 
 
