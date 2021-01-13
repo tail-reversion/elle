@@ -4,6 +4,6 @@
 
 (define deps '("base" "elle-lib" "scribble-lib"))
 
-(define build-deps '("racket-doc"))
+(define build-deps '("racket-doc" "rebellion"))
 
 (define scribblings '(("scribblings/main.scrbl" (multi-page) (language) "Elle")))
