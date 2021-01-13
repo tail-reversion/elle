@@ -198,31 +198,31 @@ Returns @racket[#true], if all @racket[x]s are ordered by numerically nonincreas
 @subsection{Contracts}
 
 @defproc[(number=/c [x real?]) flat-contract?]{
-
+Returns a flat contract that requires a real number that is numerically equivalent to @racket[x].
 }
 
 @defproc[(number</c [x real?]) flat-contract?]{
-
+Returns a flat contract that requires a real number that numerically less than @racket[x].
 }
 
 @defproc[(number>/c [x real?]) flat-contract?]{
-
+Returns a flat contract that requires a real number that is numerically greater than @racket[x].
 }
 
 @defproc[(number≤/c [x real?]) flat-contract?]{
-
+Returns a flat contract that requires a real nummber that is either numerically equivalent or less than @racket[x].
 }
 
 @defproc[(number≥/c [x real?]) flat-contract?]{
-
+Returns a flat contract that requires a real number that is either numerically equivalent or greater than @racket[x].
 }
 
 @defproc[(real-in [x1 real?] [x2 real?]) flat-contract?]{
-
+Returns a flat contract that requires a real number that is between @racket[x1] and @racket[x2], inclusive.
 }
 
 @defproc[(integer-in [i1 integer?] [i2 integer?]) flat-contract?]{
-
+Returns a flat contract that requires an integer that is between @racket[i1] and @racket[i2], inclusive.
 }
 
 
