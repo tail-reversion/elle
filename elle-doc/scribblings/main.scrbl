@@ -28,4 +28,5 @@ Elle is an intentionally small language which shares much with Racket. Notable f
 
 @include-section["core-forms.scrbl"]
 @include-section["generics.scrbl"]
+@include-section["contracts.scrbl"]
 @include-section["core-data.scrbl"]

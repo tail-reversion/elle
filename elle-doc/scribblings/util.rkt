@@ -2,6 +2,7 @@
 
 @(provide (for-label (all-from-out elle))
           ellipsis
+          ellipsis+
           deftype
           defcon)
 
@@ -15,6 +16,8 @@
 
 
 @(define ellipsis (racket ...))
+
+@(define ellipsis+ (racket ...+))
 
 
 @(define-syntax-parser deftype
