@@ -1,5 +1,7 @@
 #lang racket/base
 
+(require racket/contract)
+
 (provide flat-contract-with-explanation
          flat-named-contract
          if/c
@@ -8,27 +10,43 @@
          impersonator-contract?
          flat-contract?
          contract-name
-         value-contract
          has-contract?
-         value-blame
          has-blame?
+         blame?
          contract-late-neg-projection
          contract-projection
          contract-val-first-projection
          recursive-contract
          rename-contract
+         any
          any/c
          none/c
          λ/c
+         (contract-out
+          [rename @%value-contract value-contract (option/c contract?)]
+          [rename @%value-blame value-blame (option/c blame?)])
          (rename-out
           [or/c ∪/c]
           [and/c ∩/c]
           [not/c ¬/c]))
 
-(require racket/contract
-         (for-syntax racket/base syntax/datum)
+(require (for-syntax racket/base syntax/datum)
          syntax/parse/define
+         rebellion/base/option
          elle/private/prebase/preprebase)
+
+
+(define (@%value-contract v)
+  (let ([maybe-contract (value-contract v)])
+    (if maybe-contract
+        (present maybe-contract)
+        absent)))
+
+(define (@%value-blame v)
+  (let ([maybe-blame (value-blame v)])
+    (if maybe-blame
+        (present maybe-blame)
+        absent)))
 
 
 {begin-for-syntax
