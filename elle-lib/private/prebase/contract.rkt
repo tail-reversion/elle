@@ -67,14 +67,14 @@
              #:attr (contracts 1) (datum ({~@ kw ctc.c} ...))])
 
   (define-splicing-syntax-class mandatory-arguments-contracts
-    #:description ""
+    #:description "procedure mandatory argument contracts"
     #:attributes ([names 1] [contracts 1])
     [pattern {~seq margs:positional-argument-contracts mkwargs:keyword-argument-contracts}
              #:attr (names 1) (datum (margs.names ... mkwargs.names ...))
              #:attr (contracts 1) (datum (margs.contracts ... mkwargs.contracts ...))])
 
   (define-syntax-class optional-arguments-contracts
-    #:description ""
+    #:description "procedure optional argument contracts"
     #:attributes ([names 1] [contracts 1])
     #:literals (#%brackets)
     [pattern (#%brackets oargs:positional-argument-contracts okwargs:keyword-argument-contracts)
@@ -133,7 +133,7 @@
 
 {begin-for-syntax
   (define-splicing-syntax-class dependent-contract
-    #:description ""
+    #:description "procedure dependent argument contract"
     #:attributes (name contract)
     #:literals (: #%braces Π/c ⇒)
     [pattern {~seq var:id : (#%braces Π/c arg:id ...+ ⇒ ctc-expr)}
@@ -146,28 +146,28 @@
              #:attr contract #'(var ctc.c)])
   
   (define-splicing-syntax-class dependent-positional-argument-contracts
-    #:description ""
+    #:description "procedure dependent positional argument contracts"
     #:attributes ([names 1] [contracts 1])
     [pattern {~seq arg:dependent-contract ...}
              #:attr (names 1) (datum ({~@ . arg.name} ...))
              #:attr (contracts 1) (datum (arg.contract ...))])
 
   (define-splicing-syntax-class dependent-keyword-argument-contracts
-    #:description ""
+    #:description "procedure dependent keyword argument contracts"
     #:attributes ([names 1] [contracts 1])
     [pattern {~seq {~seq kw:keyword arg:dependent-contract} ...}
              #:attr (names 1) (datum ({~@ kw {~@ . arg.name}} ...))
              #:attr (contracts 1) (datum ({~@ kw arg.contract} ...))])
 
   (define-splicing-syntax-class mandatory-dependent-argument-contracts
-    #:description ""
+    #:description "procedure dependent mandatory argument contracts"
     #:attributes ([names 1] [contracts 1])
     [pattern {~seq args:dependent-positional-argument-contracts kwargs:dependent-keyword-argument-contracts}
              #:attr (names 1) (datum (args.names ... kwargs.names ...))
              #:attr (contracts 1) (datum (args.contracts ... kwargs.contracts ...))])
 
   (define-syntax-class optional-dependent-argument-contracts
-    #:description ""
+    #:description "procedure dependent optional argument contracts"
     #:attributes ([names 1] [contracts 1])
     #:literals (#%brackets)
     [pattern (#%brackets args:dependent-positional-argument-contracts kwargs:dependent-keyword-argument-contracts)
@@ -175,7 +175,7 @@
              #:attr (contracts 1) (datum (args.contracts ... kwargs.contracts ...))])
 
   (define-splicing-syntax-class dependent-rest-contract
-    #:description ""
+    #:description "procedure dependent rest argument contract"
     #:attributes (name contract one-or-more?)
     [pattern {~seq arg:dependent-contract {~literal ...}}
              #:attr name #'(arg.name {... '...})
@@ -187,7 +187,7 @@
              #:attr one-or-more? #t])
 
   (define-splicing-syntax-class dependent-result-contract
-    #:description ""
+    #:description "procedure dependent result contract"
     #:attributes (name contract)
     #:literals (any values #%parens)
     [pattern any
