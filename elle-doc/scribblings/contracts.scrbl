@@ -28,7 +28,23 @@ Elle inherits Racket’s robust contract system.
 
 @section{Reflection}
 
+@defproc[(contract-name [ctc contract?]) any/c]{
+
+}
+
 @defproc[(has-contract? [v any/c]) boolean?]{
+
+}
+
+@defproc[(value-contract [v any/c]) (option/c contract?)]{
+
+}
+
+@defproc[(has-blame? [v any/c]) boolean?]{
+
+}
+
+@defproc[(value-blame [v any/c]) (option/c blame?)]{
 
 }
 
