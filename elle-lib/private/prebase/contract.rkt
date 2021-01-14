@@ -4,7 +4,6 @@
 
 (provide flat-contract-with-explanation
          flat-named-contract
-         if/c
          contract?
          chaperone-contract?
          impersonator-contract?
@@ -23,8 +22,9 @@
          none/c
          λ/c
          (contract-out
-          [rename @%value-contract value-contract (option/c contract?)]
-          [rename @%value-blame value-blame (option/c blame?)])
+          [if/c {λ/c {λ/c any/c → boolean?} contract? contract? → contract?}]
+          [rename @%value-contract value-contract {λ/c any/c → (option/c contract?)}]
+          [rename @%value-blame value-blame {λ/c any/c → (option/c blame?)}])
          (rename-out
           [or/c ∪/c]
           [and/c ∩/c]
