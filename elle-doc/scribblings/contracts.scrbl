@@ -7,6 +7,61 @@
 
 Elle inherits Racket’s robust contract system.
 
+@section{Contract Types}
+
+@defproc[(contract? [v any/c]) boolean?]{
+
+}
+
+@defproc[(flat-contract? [v any/c]) boolean?]{
+
+}
+
+@defproc[(chaperone-contract? [v any/c]) boolean?]{
+
+}
+
+@defproc[(impersonator-contract? [v any/c]) boolean?]{
+
+}
+
+
+@section{Reflection}
+
+@defproc[(has-contract? [v any/c]) boolean?]{
+
+}
+
+
+@section{Trivial Contracts}
+
+@defthing[any/c contract?]{
+
+}
+
+@defthing[none/c contract?]{
+
+}
+
+
+@section{Simple Combinators}
+
+@defproc[(∩/c [contract contract?] ...) contract?]{
+
+}
+
+@defproc[(∪/c [contract contract?] ...) contract?]{
+
+}
+
+@defproc[(¬/c [contract contract?]) contract?]{
+
+}
+
+@defproc[(if/c [predicate {λ/c any/c → any/c}] [then-contract contract?] [else-contract contract?]) contract?]{
+
+}
+
 
 @section{Procedure Contracts}
 
