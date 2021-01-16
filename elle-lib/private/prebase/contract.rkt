@@ -80,6 +80,30 @@
     [pattern (#%brackets oargs:positional-argument-contracts okwargs:keyword-argument-contracts)
              #:attr (names 1) (datum (oargs.names ... okwargs.names ...))
              #:attr (contracts 1) (datum (oargs.contracts ... okwargs.contracts ...))])
+
+  (define-splicing-syntax-class precondition
+    #:description "procedure precondition"
+    #:attributes (pre-name pre-expr)
+    #:literals (#%brackets)
+    [pattern {~seq #:pre (#%brackets pre-name:str pre-test fail-msg:str)}
+             #:declare pre-test (expr/c #'boolean?)
+             #:attr pre-expr #'(if pre-test.c #t  fail-msg)]
+    [pattern {~seq #:pre (#%brackets pre-test fail-msg:str)}
+             #:declare pre-test (expr/c #'boolean?)
+             #:attr pre-name #''pre-test
+             #:attr pre-expr #'(if pre-test.c #t fail-msg)])
+
+  (define-splicing-syntax-class postcondition
+    #:description "procedure postcondition"
+    #:attributes (post-name post-expr)
+    #:literals (#%brackets)
+    [pattern {~seq #:post (#%brackets post-name:str post-test fail-msg:str)}
+             #:declare post-test (expr/c #'boolean?)
+             #:attr post-expr #'(if post-test.c #t fail-msg)]
+    [pattern {~seq #:post (#%brackets post-test fail-msg:str)}
+             #:declare post-test (expr/c #'boolean?)
+             #:attr post-name #''post-test
+             #:attr post-expr #'(if post-test.c #t fail-msg)])
   
   (define-syntax-class result-contract
     #:description "procedure result contract"
