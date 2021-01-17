@@ -15,7 +15,7 @@
 not : {λ/c boolean? → boolean?}
 not = rkt:not
 
-negate : {λ/c procedure? → procedure?}
+negate : {λ/c {λ/c #:unconstrained → boolean?} → {λ/c #:unconstrained → boolean?}}
 (negate pred) ⇒ (∘ not pred)
 
 and : {λ/c boolean? ... → boolean?}
