@@ -181,7 +181,21 @@
 
 (define-syntax-parser λ/c
   #:track-literals
-  #:literals (→)
+  #:literals (any →)
+  [(_ any → any)
+   #:with name #'(procedure-contract-name (list 'any) (list) #f 'any)
+   #:with contract #'procedure?
+   #'(rename-contract contract name)]
+  [(_ any → ({~literal values} ctc ...))
+   #:declare ctc (expr/c #'contract?)
+   #:with name #'(procedure-contract-name (list 'any) (list) #f (list 'values (contract-name ctc.c) ...))
+   #:with contract #'(unconstrained-domain-> ctc.c ...)
+   #'(rename-contract contract name)]
+  [(_ any → ctc)
+   #:declare ctc (expr/c #'contract?)
+   #:with name #'(procedure-contract-name (list 'any) (list) #f (contract-name ctc.c))
+   #:with contract #'(unconstrained-domain-> ctc.c)
+   #'(rename-contract contract name)]
   [(_ margs:mandatory-arguments-contracts oargs:optional-arguments-contracts rest:rest-contract → result:result-contract)
    #:with name #'(procedure-contract-name (list margs.names ...) (list oargs.names ...) rest.name result.name)
    #:with contract #`(->* (margs.contracts ...) (oargs.contracts ...) #:rest #,(if (attribute rest.one-or-more?)
