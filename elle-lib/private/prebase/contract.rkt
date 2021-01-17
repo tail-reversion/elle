@@ -17,7 +17,6 @@
          contract-val-first-projection
          recursive-contract
          rename-contract
-         any
          any/c
          none/c
          λ/c
@@ -89,6 +88,9 @@
      (write-string " → " port)
      (write (procedure-contract-name-result-name self) port)
      (write-char #\} port))])
+
+(define (make-unconstrained-domain-procedure-contract-name result-name)
+  (procedure-contract-name '(#:unconstrained) '() #f result-name))
 
 
 {begin-for-syntax
@@ -164,9 +166,9 @@
   (define-syntax-class result-contract
     #:description "procedure result contract"
     #:attributes (name normalized)
-    #:literals (#%parens values any)
-    [pattern any
-             #:attr name #''any
+    #:literals (#%parens values)
+    [pattern #:unconstrained
+             #:attr name #''#:unconstrained
              #:attr normalized #'any]
     [pattern (#%parens values ctc ...)
              #:declare ctc (expr/c #'contract?)
@@ -181,19 +183,19 @@
 
 (define-syntax-parser λ/c
   #:track-literals
-  #:literals (any →)
-  [(_ any → any)
-   #:with name #'(procedure-contract-name (list 'any) (list) #f 'any)
+  #:literals (→)
+  [(_ #:unconstrained → #:unconstrained)
+   #:with name #'(make-unconstrained-domain-procedure-contract-name '#:unconstrained)
    #:with contract #'procedure?
    #'(rename-contract contract name)]
-  [(_ any → ({~literal values} ctc ...))
+  [(_ #:unconstrained → ({~literal values} ctc ...))
    #:declare ctc (expr/c #'contract?)
-   #:with name #'(procedure-contract-name (list 'any) (list) #f (list 'values (contract-name ctc.c) ...))
+   #:with name #'(make-unconstrained-domain-procedure-contract-name (list 'values (contract-name ctc.c) ...))
    #:with contract #'(unconstrained-domain-> ctc.c ...)
    #'(rename-contract contract name)]
-  [(_ any → ctc)
+  [(_ #:unconstrained → ctc)
    #:declare ctc (expr/c #'contract?)
-   #:with name #'(procedure-contract-name (list 'any) (list) #f (contract-name ctc.c))
+   #:with name #'(make-unconstrained-domain-procedure-contract-name (contract-name ctc.c))
    #:with contract #'(unconstrained-domain-> ctc.c)
    #'(rename-contract contract name)]
   [(_ margs:mandatory-arguments-contracts oargs:optional-arguments-contracts rest:rest-contract → result:result-contract)
