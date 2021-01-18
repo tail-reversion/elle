@@ -4,6 +4,7 @@
 
 
 @title{Text}
+Elle’s text data type is an immutable string of Unicode characters (code points).
 
 @defproc[(text? [v any/c]) boolean?]{
  Returns @racket[#true], if @racket[v] is a text value, @racket[#false], otherwise.
@@ -24,6 +25,9 @@
 @defproc[(text-append [txt text?] ...) text?]{
  Returns a new text value that contains the concatenated character content of the @racket[txt]s, in order. In the special case of zero @racket[txt]s, returns the empty text value.
 }
+
+
+@section{Comparison}
 
 @defproc[(text=? [txt text?] ...+) boolean?]{
  Returns @racket[#true], if all the @racket[txt]s have identical character content; @racket[#false], otherwise.
