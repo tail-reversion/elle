@@ -11,19 +11,7 @@
 @include-section["core-data/keyword.scrbl"]
 @include-section["core-data/number.scrbl"]
 @include-section["core-data/optional.scrbl"]
-
-
-@section{Result Values}
-
-@defidform[#:kind "type" result]{
- @defsubform[#:kind "constructor" #:id success (success value)]{
-
- }
-
- @defsubform[#:kind "constructor" #:id failure (failure error)]{
-
- }
-}
+@include-section["core-data/result.scrbl"]
 
 
 @section{Symbols}
