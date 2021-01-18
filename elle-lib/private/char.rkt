@@ -16,7 +16,11 @@
            char-ci<?
            char-ci>?
            char-ci<=? #:as char-ci≤?
-           char-ci>=? #:as char-ci≥?}
+           char-ci>=? #:as char-ci≥?
+           char-upcase #:as char-uppercase
+           char-downcase #:as char-lowercase
+           char-titlecase
+           char-foldcase}
 
 {reprovide racket/contract #:exposing char-in}
 

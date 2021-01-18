@@ -73,3 +73,22 @@
 @defproc[(char-in [c1 char?] [c2 char?]) flat-contract?]{
  Returns a flat contract that recognizes a character with a code point between that of @racket[c1] and @racket[c2], inclusive.
 }
+
+
+@section{Conversions}
+
+@defproc[(char-uppercase [c char?]) char?]{
+ Returns the uppercase character associated with @racket[c], as defined by Unicode. In the case that no such mapping is defined, returns @racket[c].
+}
+
+@defproc[(char-lowercase [c char?]) char?]{
+ Like @racket[char-uppercase], but for lowercase mapping.
+}
+
+@defproc[(char-titlecase [c char?]) char?]{
+ Like @racket[char-uppercase], but for titlecase mapping.
+}
+
+@defproc[(char-foldcase [c char?]) char?]{
+ Like @racket[char-uppercase], but for case-folding mapping.
+}
