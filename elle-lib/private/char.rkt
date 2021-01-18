@@ -7,10 +7,16 @@
 {reprovide racket/base
            #:exposing
            char?
+           char=?
            char<?
            char>?
            char<=? #:as char≤?
-           char>=? #:as char≥?}
+           char>=? #:as char≥?
+           char-ci=?
+           char-ci<?
+           char-ci>?
+           char-ci<=? #:as char-ci≤?
+           char-ci>=? #:as char-ci≥?}
 
 {reprovide racket/contract #:exposing char-in}
 

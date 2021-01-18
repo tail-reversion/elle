@@ -63,6 +63,13 @@
  Returns the character represented by @racket[n].
 }
 
+
+@subsection{Comparison}
+
+@defproc[(char=? [c char?] ...+) boolean?]{
+ Returns @racket[#true], if the @racket[c]s are equivalent; @racket[#false], otherwise.
+}
+
 @defproc[(char<? [c char?] ...+) boolean?]{
  Returns @racket[#true], if the @racket[c]s are ordered by increasing Scalar Values; @racket[#false], otherwise.
 }
@@ -78,6 +85,32 @@
 @defproc[(char≥? [c char?] ...+) boolean?]{
  Returns @racket[#true], if the @racket[c]s are ordered by nonincreasing Scalar Values; @racket[#false], otherwise.
 }
+
+
+@subsubsection{Case-Insensitive Comparison}
+
+@defproc[(char-ci=? [c char?] ...+) boolean?]{
+ Like @racket[char=?], but case-insensitive.
+}
+
+@defproc[(char-ci<? [c char?] ...+) boolean?]{
+ Like @racket[char<?], but case-insensitive.
+}
+
+@defproc[(char-ci>? [c char?] ...+) boolean?]{
+ Like @racket[char>?], but case-insensitive.
+}
+
+@defproc[(char-ci≤? [c char?] ...+) boolean?]{
+ Like @racket[char≤?], but case-insensitive.
+}
+
+@defproc[(char-ci≥? [c char?] ...+) boolean?]{
+ Like @racket[char≥?], but case-insensitive.
+}
+
+
+@subsection{Contracts}
 
 @defproc[(char-in [c1 char?] [c2 char?]) flat-contract?]{
  Returns a flat contract that recognizes a character with a code point between that of @racket[c1] and @racket[c2], inclusive.
