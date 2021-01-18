@@ -3,8 +3,10 @@
 @(require "util.rkt")
 
 
-@title{Core Data Types}
+@title[#:style '(toc)]{Core Data Types}
 
+
+@table-of-contents[]
 
 @include-section["core-data/boolean.scrbl"]
 @include-section["core-data/character.scrbl"]
