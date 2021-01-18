@@ -10,7 +10,7 @@
 @include-section["core-data/character.scrbl"]
 @include-section["core-data/keyword.scrbl"]
 @include-section["core-data/number.scrbl"]
-@include-section["core-data/optional.rkt"]
+@include-section["core-data/optional.scrbl"]
 
 
 @section{Result Values}
