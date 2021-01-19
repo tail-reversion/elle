@@ -71,3 +71,41 @@ Elle’s text data type is an immutable string of Unicode characters (code point
 @defproc[(text-ci≥? [txt text?] ...+) boolean?]{
  Like @racket[text≥?], but case-insensitive.
 }
+
+
+@subsection{Case Mapping}
+
+@defproc[(text-uppercase [txt text?]) text?]{
+ Returns text whose character content has been mapped to uppercase characters, given Unicode’s local-independent uppercase mapping rules.
+}
+
+@defproc[(text-lowercase [txt text?]) text?]{
+ Like @racket[text-uppercase], but for lowercase mapping.
+}
+
+@defproc[(text-titlecase [txt text?]) text?]{
+ Like @racket[text-uppercase], but for titlecase mapping.
+}
+
+@defproc[(text-foldcase [txt text?]) text?]{
+ Like @racket[text-uppercase], but for case-folding.
+}
+
+
+@subsection{Normalization}
+
+@defproc[(text-normalize-nfd [txt text?]) text?]{
+ Returns text that is normalized according to Unicode Normalized Form D.
+}
+
+@defproc[(text-normalize-nfc [txt text?]) text?]{
+ Like @racket[text-normalize-nfd], but for Normalized Form C.
+}
+
+@defproc[(text-normalize-nfkd [txt text?]) text?]{
+ Like @racket[text-normalize-nfd], but for Normalized Form KD.
+}
+
+@defproc[(text-normalize-nfkc [txt text?]) text?]{
+ Like @racket[text-normalize-nfd], but for Normalized Form KC.
+}
