@@ -48,3 +48,26 @@ Elle’s text data type is an immutable string of Unicode characters (code point
 @defproc[(text≥? [txt text?] ...+) boolean?]{
  Returns @racket[#true], if the @racket[txt]s are in nonincreasing lexicographical order, given locale-insensitive, case-sensitive comparison; @racket[#false], otherwise.
 }
+
+
+@subsection{Case-Insensitive Comparison}
+
+@defproc[(text-ci=? [txt text?] ...+) boolean?]{
+ Like @racket[text=?], but case-insensitive.
+}
+
+@defproc[(text-ci<? [txt text?] ...+) boolean?]{
+ Like @racket[text<?], but case-insensitive.
+}
+
+@defproc[(text-ci>? [txt text?] ...+) boolean?]{
+ Like @racket[text>?], but case-insenstive.
+}
+
+@defproc[(text-ci≤? [txt text?] ...+) boolean?]{
+ Like @racket[text≤?], but case-insensitive.
+}
+
+@defproc[(text-ci≥? [txt text?] ...+) boolean?]{
+ Like @racket[text≥?], but case-insensitive.
+}

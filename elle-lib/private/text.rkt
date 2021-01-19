@@ -11,4 +11,9 @@
            immutable-string<? #:as text<?
            immutable-string<=? #:as text≤?
            immutable-string>? #:as text>?
-           immutable-string>=? #:as text≥?}
+           immutable-string>=? #:as text≥?
+           immutable-string-ci=? #:as text-ci=?
+           immutable-string-ci<? #:as text-ci<?
+           immutable-string-ci>? #:as text-ci>?
+           immutable-string-ci<=? #:as text-ci≤?
+           immutable-string-ci>=? #:as text-ci≥?}
