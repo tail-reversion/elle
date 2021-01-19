@@ -5,6 +5,8 @@
 
 @title{Defining New Types}
 
+@section{Algebraic Data Types}
+
 @defform/subs[{define-type name type-case ...+ type-option ...}
               ([type-case enum-id
                 (tuple-id field-id ...)
@@ -25,4 +27,26 @@
  @item{for each @racket[record-id], the namme @racket[record-id]@tt{?} is bound to a predicate that returns @racket[#true], if the given value is an instance of @racket[record-id]; @racket[#false], otherwise;}
  @item{for each @racket[record-id], the name @racket[record-id]@tt{-}@racket[field-kw] is bound to a projection operation (accessor)  for the respective field.}
  ]
+}
+
+
+@section{Wrapper Types}
+
+@defform/subs[{define-wrapper-type name type-option ...}
+              ([type-option (code:line #:inspector inspector)]
+               (code:line #:property property expr))
+              #:contracts ([inspector inspector?]
+                           [property struct-type-property?])]{
+
+}
+
+
+@section{Object Types}
+
+@defform/subs[{define-object-type name (#:field-kw ...) type-option}
+              ([type-option (code:line #:inspector inspector)
+                (code:line #:property property expr)])
+              #:contracts ([inspector inspector?]
+                           [property struct-type-property?])]{
+
 }
