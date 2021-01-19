@@ -17,6 +17,16 @@
 }
 
 
+@subsection{Primitive Types}
+
+@itemlist[
+ @item{@racket[number?]: @racket[number=?]}
+ @item{@racket[char?]: @racket[char=?]}
+ @item{@racket[symbol?]: @racket[symbol=?]}
+ @item{@racket[text?]: @racket[text=?]}
+ ]
+
+
 @section{Ordering}
 
 @defproc[(ordered? [v any/c]) boolean?]{
@@ -30,3 +40,14 @@
 @defproc[(>? [v1 ordered?] [v2 ordered?]) boolean?]{
  Returns @racket[#true], if @racket[v1] is greater than @racket[v2]; @racket[#false], otherwise.
 }
+
+
+@section{Primitive Types}
+
+@itemlist[
+ @item{@racket[number?]: @racket[number<?], @racket[number>?]}
+ @item{@racket[char?]: @racket[char<?], @racket[char>?]}
+ @item{@racket[symbol?]: @racket[symbol<?]}
+ @item{@racket[keyword?]: @racket[keyword<?]}
+ @item{@racket[text?]: @racket[text<?], @racket[text>?]}
+ ]
