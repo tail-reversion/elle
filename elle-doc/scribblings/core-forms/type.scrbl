@@ -23,9 +23,9 @@
  @item{each @racket[tuple-id] is bound to static information about the respective tuple case; it is also bound to a match-expander for constructing and destructuring values of the tuple case;}
  @item{for each @racket[tuple-id], the name @racket[tuple-id]@tt{?} is bound to a predicate that returns @racket[#true], if the given value is an instance of @racket[tuple-id]; @racket[#false], otherwise;}
  @item{for each @racket[tuple-id], the name @racket[tuple-id]@tt{-}@racket[field-id] is bound to a projection operation (accessor) for the respective field;}
- @item{each @racket[record-id] is bound to static information about the respective record case; it is alsso bound too a match-expander for constructing and destructuring values of the record case;}
- @item{for each @racket[record-id], the namme @racket[record-id]@tt{?} is bound to a predicate that returns @racket[#true], if the given value is an instance of @racket[record-id]; @racket[#false], otherwise;}
- @item{for each @racket[record-id], the name @racket[record-id]@tt{-}@racket[field-kw] is bound to a projection operation (accessor)  for the respective field.}
+ @item{each @racket[record-id] is bound to static information about the respective record case; it is also bound to a match-expander for constructing and destructuring values of the record case;}
+ @item{for each @racket[record-id], the name @racket[record-id]@tt{?} is bound to a predicate that returns @racket[#true], if the given value is an instance of @racket[record-id]; @racket[#false], otherwise;}
+ @item{for each @racket[record-id], the name @racket[record-id]@tt{-}@racket[field-kw] is bound to a projection operation (accessor) for the respective field.}
  ]
 }
 
