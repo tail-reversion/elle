@@ -17,13 +17,7 @@ Elle differs from other Lisps in that it uses several delimiters, each having a 
 @include-section["core-forms/definition.scrbl"]
 @include-section["core-forms/pattern.scrbl"]
 @include-section["core-forms/procedure.scrbl"]
-
-
-@section{Local Binding}
-
-@defform[{let definition ...+ #:in expr}]{
- Performs the given definitions and makes available their bindings in the body of @racket[expr], which is evaluated in tail position, with respect to the @racket[let] form.
-}
+@include-section["core-forms/local-binding.scrbl"]
 
 
 @section{Conditional Forms}
