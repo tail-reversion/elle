@@ -33,8 +33,8 @@
 @section{Wrapper Types}
 
 @defform/subs[{define-wrapper-type name type-option ...}
-              ([type-option (code:line #:inspector inspector)]
-               (code:line #:property property expr))
+              ([type-option (code:line #:inspector inspector)
+                (code:line #:property property expr)])
               #:contracts ([inspector inspector?]
                            [property struct-type-property?])]{
 
