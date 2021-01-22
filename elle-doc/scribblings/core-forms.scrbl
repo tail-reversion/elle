@@ -20,3 +20,4 @@ Elle differs from other Lisps in that it uses several delimiters, each having a 
 @include-section["core-forms/local-binding.scrbl"]
 @include-section["core-forms/conditional.scrbl"]
 @include-section["core-forms/type.scrbl"]
+@include-section["core-forms/require-provide.scrbl"]
