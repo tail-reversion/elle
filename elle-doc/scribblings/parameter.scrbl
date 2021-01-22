@@ -9,7 +9,7 @@
  Returns @racket[#true], if @racket[v] is a parameter; @racket[#false], otherwise.
 }
 
-@racket[(make-parameter [initial any/c] [#:name name symbol? 'parameter-procedure] [#:guard guard any/c]) parameter?]{
+@racket[(make-parameter [initial any/c] [#:name name symbol? 'parameter-procedure] [#:guard guard (option/c {λ/c any/c → #:unconstrained})]) parameter?]{
  Returns a new parameter, with initial value @racket[initial], name @racket[name], and guard @racket[guard].
 }
 
