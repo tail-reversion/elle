@@ -8,7 +8,6 @@
           elle/private/prebase/let-lam
           elle/private/prebase/match
           elle/private/prebase/module-body
-          elle/private/prebase/parameter
           elle/private/prebase/special
           elle/private/prebase/type)
          ...
@@ -25,7 +24,6 @@
          elle/private/prebase/let-lam
          elle/private/prebase/match
          elle/private/prebase/module-body
-         elle/private/prebase/parameter
          elle/private/prebase/require-provide
          elle/private/prebase/special
          elle/private/prebase/type)
