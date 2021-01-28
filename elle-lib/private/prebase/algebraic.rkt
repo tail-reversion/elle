@@ -1,5 +1,24 @@
 #lang racket/base
 
+(require racket/contract)
+
+(provide (contract-out
+          [algebraic-type (-> symbol? record? algebraic-type?)]
+          [algebraic-type? (-> any/c boolean?)]
+          [rename algebraic-type-name algebraic-type.name (-> algebraic-type? symbol?)]
+          [rename algebraic-type-variants algebraic-type.variants (-> algebraic-type? record?)]
+          [algebraic-descriptor? (-> any/c boolean?)]
+          [uninitialized-algebraic-descriptor? (-> any/c boolean?)]
+          [initialized-algebraic-descriptor? (-> any/c boolean?)]
+          [algebraic-descriptor.type (-> algebraic-descriptor? algebraic-type?)]
+          [algebraic-descriptor.predicate (-> algebraic-descriptor? algebraic-type?)]
+          [algebraic-descriptor.constructors (-> algebraic-descriptor? (vectorof procedure? #:immutable #t))]
+          [algebraic-descriptor.accessors (-> algebraic-descriptor? (vectorof procedure? #:immutable #t))]
+          [algebraic-descriptor.enumerator (-> algebraic-descriptor? procedure?)]
+          [make-algebraic-implementation (->* (algebraic-type?) (#:inspector inspector?) initialized-algebraic-descriptor?)]
+          [default-algebraic-custom-write (-> algebraic-descriptor? procedure?)]
+          [make-keyword-constructors (-> algebraic-descriptor? (vectorof procedure? #:immutable #t))]))
+
 (require racket/sequence
          rebellion/type/record
          rebellion/type/tuple
@@ -29,6 +48,10 @@
 (define-record-type uninitialized-algebraic-descriptor (type predicate constructors accessors enumerator))
 
 (define-record-type initialized-algebraic-descriptor (type predicate constructors accessors enumerator backing-tuple-descriptor))
+
+(define (algebraic-descriptor? v)
+  (or (initialized-algebraic-descriptor? v)
+      (uninitialized-algebraic-descriptor? v)))
 
 (define ((make-getter uninit init) desc)
   (if (initialized-algebraic-descriptor? desc)
