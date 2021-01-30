@@ -13,7 +13,9 @@
          rebellion/type/enum
          rebellion/type/singleton
          rebellion/type/wrapper
-         rebellion/type/object)
+         rebellion/type/object
+         elle/private/prebase/preprebase
+         elle/private/prebase/algebraic)
 
 
 (define-syntax-parser @%define-singleton-type
@@ -69,5 +71,3 @@
               #:property-maker (λ (desc)
                                  (append (list (cons prop prop-val-name) ...)
                                          (default-object-properties desc)))))])
-
-
