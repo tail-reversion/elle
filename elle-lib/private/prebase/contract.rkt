@@ -166,14 +166,6 @@
   (define-syntax-class result-contract
     #:description "procedure result contract"
     #:attributes (name normalized)
-    #:literals (#%parens values)
-    [pattern #:unconstrained
-             #:attr name #''#:unconstrained
-             #:attr normalized #'any]
-    [pattern (#%parens values ctc ...)
-             #:declare ctc (expr/c #'contract?)
-             #:attr name #'(list 'values (contract-name ctc.c) ...)
-             #:attr normalized #'(values ctc.c ...)]
     [pattern ctc
              #:declare ctc (expr/c #'contract?)
              #:attr name #'(contract-name ctc.c)
@@ -184,15 +176,6 @@
 (define-syntax-parser λ/c
   #:track-literals
   #:literals (→)
-  [(_ #:unconstrained → #:unconstrained)
-   #:with name #'(make-unconstrained-domain-procedure-contract-name '#:unconstrained)
-   #:with contract #'procedure?
-   #'(rename-contract contract name)]
-  [(_ #:unconstrained → ({~literal values} ctc ...))
-   #:declare ctc (expr/c #'contract?)
-   #:with name #'(make-unconstrained-domain-procedure-contract-name (list 'values (contract-name ctc.c) ...))
-   #:with contract #'(unconstrained-domain-> ctc.c ...)
-   #'(rename-contract contract name)]
   [(_ #:unconstrained → ctc)
    #:declare ctc (expr/c #'contract?)
    #:with name #'(make-unconstrained-domain-procedure-contract-name (contract-name ctc.c))

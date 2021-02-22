@@ -14,8 +14,7 @@
          (except-out (all-from-out elle/private/prebase/require-provide) @%require @%provide)
          (rename-out
           [@%require require]
-          [@%provide provide])
-         values)
+          [@%provide provide]))
 
 (require elle/private/prebase/preprebase
          (submod elle/private/prebase/preprebase app)

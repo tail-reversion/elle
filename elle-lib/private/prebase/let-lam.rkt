@@ -6,8 +6,7 @@
 
 (require (for-syntax racket/base syntax/datum)
          syntax/parse/define
-         elle/private/prebase/preprebase
-         (only-in racket/match match-letrec-values match-define-values))
+         elle/private/prebase/preprebase)
 
 
 {begin-for-syntax
@@ -120,7 +119,7 @@
     #:attributes (normalized)
     #:literals (= ⇒)
     [pattern {~seq name:id = e:safe-expr}
-             #:attr normalized #'((name) e)]
+             #:attr normalized #'(name e)]
     [pattern {~seq header:procedure-header ⇒ body:safe-expr}
              #:attr normalized #'((header.name) ({~@ . header.curried-λ-heads} ... body))])
   }
@@ -130,5 +129,5 @@
   #:literals (#%brackets =)
   [(_ lb:let-binding ...+ #:in body:safe-expr)
    (syntax/loc this-syntax
-     (letrec-values (lb.normalized ...)
+     (letrec (lb.normalized ...)
        body))])
