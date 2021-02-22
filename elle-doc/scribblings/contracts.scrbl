@@ -92,16 +92,10 @@ Elle inherits Racket’s robust contract system.
                [maybe-rest (code:line)
                 (code:line arg-ctc #,ellipsis)
                 (code:line arg-ctc #,ellipsis+)]
-               [result-spec result-ctc
-                (values result-ctc ...)
-                #:unconstrained])
+               [result-spec result-ctc])
               #:contracts ([arg-ctc contract?]
                            [result-ctc contract?])]{
  Builds a contract that requires a procedure with the specified inputs and return result. The contract will be checked each time that the procedure is called and each time it returns.
-}
-
-@defidform[any]{
- A contract that is always satisfied. Used only in the result position of procedure contracts.
 }
 
 @defidform[→]{
