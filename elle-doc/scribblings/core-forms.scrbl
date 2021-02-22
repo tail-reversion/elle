@@ -15,7 +15,6 @@ Elle differs from other Lisps in that it uses several delimiters, each having a 
 
 
 @include-section["core-forms/definition.scrbl"]
-@include-section["core-forms/pattern.scrbl"]
 @include-section["core-forms/procedure.scrbl"]
 @include-section["core-forms/local-binding.scrbl"]
 @include-section["core-forms/conditional.scrbl"]
