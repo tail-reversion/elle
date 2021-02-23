@@ -1,7 +1,6 @@
 #lang elle/base
 
-{provide @%vector #:as vector
-         immutable-vector? #:as vector?
+{provide immutable-vector? #:as vector?
          make-immutable-vector #:as make-vector
          immutable-vector-length #:as vector-length
          immutable-vector-ref #:as vector-ref
@@ -25,17 +24,3 @@
          nonempty-immutable-vector? #:as nonempty-vector?}
 
 {require rebellion/collection/immutable-vector #:exposing-all}
-{require racket/base #:exposing vector}
-{require racket/match #:exposing define-match-expander}
-
-{require-for-syntax racket/base #:exposing-all}
-{require-for-syntax syntax/parse #:exposing-all}
-
-
-#(define-match-expander @%vector
-   (syntax-parser
-     #:track-literals
-     [(_ elt ...) #'(vector elt ...)])
-   (syntax-parser
-     #:track-literals
-     [(_ elt:expr ...) #'(immutable-vector elt ...)]))
